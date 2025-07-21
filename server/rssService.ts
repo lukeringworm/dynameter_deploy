@@ -29,18 +29,7 @@ const RSS_FEEDS = {
   ]
 };
 
-// In-memory storage for articles
-let articlesCache: NewsResponse = {
-  defense: [],
-  manufacturing: [],
-  energy: [],
-  workforce: [],
-  techPolicy: [],
-  supplyChain: []
-};
-
-// Track processed articles to avoid duplicates
-const processedArticles = new Set<string>();
+import { storage } from './storage';
 
 class RSSService {
   private parser: Parser;
@@ -122,8 +111,9 @@ class RSSService {
           processed: false
         };
 
+        // Save to database
+        await storage.saveNewsArticle(article);
         newArticles.push(article);
-        processedArticles.add(item.link);
         
         // Add to processing queue for AI scoring
         this.processingQueue.push({ article, category });
@@ -229,11 +219,15 @@ Respond only with valid JSON in this format:
       const aiResult = JSON.parse(responseText);
       
       // Update article with AI scoring
-      article.impactScore = Math.max(-5, Math.min(5, aiResult.impact_score || 0));
-      article.aiSummary = aiResult.summary || article.description;
+      const impactScore = Math.max(-5, Math.min(5, aiResult.impact_score || 0));
+      const aiSummary = aiResult.summary || article.description || '';
+      
+      await storage.updateArticleScore(article.link, impactScore, aiSummary);
+      article.impactScore = impactScore;
+      article.aiSummary = aiSummary;
       article.processed = true;
 
-      console.log(`Scored article: ${article.title} (${article.impactScore})`);
+      console.log(`Scored article: ${article.title} (${impactScore})`);
       adminStatsTracker.recordScoringSuccess('ai');
     } catch (error) {
       console.error(`Failed to score article: ${article.title}`, error);
@@ -244,16 +238,20 @@ Respond only with valid JSON in this format:
       }
       
       // Set default values if AI scoring fails
-      article.impactScore = this.generateBasicScore(article, category);
-      article.aiSummary = article.description || article.title;
+      const impactScore = this.generateBasicScore(article, category);
+      const aiSummary = article.description || article.title;
+      
+      await storage.updateArticleScore(article.link, impactScore, aiSummary);
+      article.impactScore = impactScore;
+      article.aiSummary = aiSummary;
       article.processed = true;
       adminStatsTracker.recordScoringSuccess('keyword');
     }
   }
 
-  // Get all cached articles
-  getArticles(): NewsResponse {
-    return articlesCache;
+  // Get all articles from database
+  async getArticles(): Promise<NewsResponse> {
+    return await storage.getNews();
   }
 
   // Get articles for a specific category
