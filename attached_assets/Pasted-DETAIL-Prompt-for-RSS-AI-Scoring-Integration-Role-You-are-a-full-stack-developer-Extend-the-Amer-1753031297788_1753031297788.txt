@@ -1,0 +1,135 @@
+DETAIL Prompt for RSS + AI Scoring Integration
+Role:
+You are a full-stack developer. Extend the American Dynamism Tracker backend to:
+
+Fetch and parse RSS feeds for each of the 6 categories.
+
+Use the OpenAI API to score and summarize each article.
+
+Serve the scored articles via the API for frontend display and dynamic category scoring.
+
+Tasks & Requirements
+1. RSS Feed Integration
+Feeds to Include:
+
+Defense:
+
+https://breakingdefense.com/full-rss-feed/?v=2
+
+https://www.defensenews.com/arc/outboundfeeds/rss/?outputType=xml
+
+Reshoring Manufacturing:
+
+https://www.manufacturingdive.com/feeds/news/
+
+Labor Development:
+
+https://www.bls.gov/feed/empsit.rss
+
+https://www.laborrelationsupdate.com/feed/
+
+Energy/Infrastructure:
+
+https://www.eia.gov/rss/todayinenergy.xml
+
+Tech-Policy Alignment:
+
+https://thehill.com/policy/technology/feed/
+
+Critical Supply Chains:
+
+https://www.supplychaindive.com/feeds/news/
+
+Polling:
+
+Fetch each feed every 15 minutes using a scheduler or background task.
+
+Parsing:
+
+Extract title, link, pubDate, and description/summary for each article.
+
+Deduplicate articles using the link as a unique identifier.
+
+2. AI Scoring
+For each new article:
+
+Send title and summary to the OpenAI Chat Completions API:
+
+Endpoint: https://api.openai.com/v1/chat/completions
+
+Model: gpt-4o-mini
+
+API Key: (stored in .env as OPENAI_API_KEY).
+
+Prompt Template:
+
+css
+Copy
+Edit
+You are an analyst scoring news for American Dynamism.
+Analyze the article below and provide:
+1. A numerical impact score from -5 (negative) to +5 (positive) reflecting its impact on the {CATEGORY}.
+2. A concise one-sentence summary of the article.
+
+Title: {TITLE}
+Summary: {SUMMARY}
+Expected response (JSON):
+
+json
+Copy
+Edit
+{
+  "impact_score": 3,
+  "summary": "Anduril wins a $180M defense contract, boosting U.S. autonomous defense tech."
+}
+Rate Limiting:
+
+Queue API calls with a 1-second delay between requests to avoid 429 errors.
+
+Retry failed calls up to 3 times with exponential backoff (1s → 2s → 5s).
+
+3. Database & API
+Store Articles:
+
+Save the parsed data plus impact_score and summary into a database (or in-memory cache for MVP).
+
+Update Category Scores:
+
+Compute each category’s score as a rolling average of recent article scores (e.g., last 30 days).
+
+Expose a new API endpoint /api/news that returns:
+
+json
+Copy
+Edit
+{
+  "defense": [ { "title": "...", "impact_score": 3, "summary": "...", "link": "..." }, ... ],
+  "manufacturing": [...],
+  ...
+}
+Update /api/milestones to include category scores derived from article scoring.
+
+4. Frontend Display
+In React:
+
+Fetch /api/news and display the latest 5 headlines per category, with:
+
+Title (clickable link).
+
+Impact score (green for positive, red for negative).
+
+One-line AI summary.
+
+5. Testing
+Manually trigger RSS parsing.
+
+Confirm:
+
+Each feed returns valid articles.
+
+AI scores and summaries are being added.
+
+The /api/news endpoint returns the expected JSON.
+
+Prompt for Replit
+“Extend the American Dynamism Tracker backend to fetch articles from 8 RSS feeds across 6 categories. Parse title, link, pubDate, and summary. Use the OpenAI API (gpt-4o-mini) to generate a -5 to +5 impact score and a 1-sentence summary for each article. Queue API calls with delays to avoid 429 errors. Store and serve this data at a new endpoint /api/news grouped by category. Ensure category scores update dynamically from recent article scores.”

@@ -1,0 +1,171 @@
+Role:
+You are a full-stack developer. Build a complete American Dynamism Tracker web app in Replit, using React + Vite + Tailwind (frontend) and Express.js (backend). Include mock data, charts, and category cards.
+
+Key Requirements:
+1. Project Setup
+
+Create a client folder using Vite + React.
+
+Configure Tailwind CSS in the client folder.
+
+Create a backend with Express.js in the root directory (server.js).
+
+Connect frontend and backend via /api endpoints.
+
+2. Backend (server.js)
+
+Use Express.js to create endpoints:
+
+/api/score → Returns a JSON object with:
+
+json
+Copy
+Edit
+{
+  "adIndex": 68,
+  "categories": {
+    "defense": 74,
+    "manufacturing": 62,
+    "energy": 58,
+    "workforce": 55,
+    "techPolicy": 61,
+    "supplyChain": 59
+  },
+  "news": [
+    { "category": "defense", "title": "Anduril wins $180M DoD contract", "impact_score": 4, "link": "#" },
+    { "category": "manufacturing", "title": "Tesla expands battery factory in Texas", "impact_score": 3, "link": "#" }
+  ]
+}
+Ensure CORS is enabled to allow frontend calls.
+
+Use npm run dev to start the backend.
+
+3. Frontend Layout (React + Tailwind)
+
+Landing Page:
+
+Hero section with AD Index score displayed as a big number (e.g., 68/100).
+
+Subtitle: “National Momentum: +2.1 this week.”
+
+Button: “View Categories.”
+
+Graphs:
+
+Add a LineChart (using recharts) showing AD Index trend over time (mock data for last 30 days).
+
+Category Grid:
+
+6 cards (Tailwind flex or grid layout).
+
+Each card shows:
+
+Category name (e.g., “Defense Tech”).
+
+Current score (e.g., 74).
+
+A small bar or sparkline (mock trend graph).
+
+A “See Details” button.
+
+News Feed Section:
+
+Display a list of 3-5 news blurbs with:
+
+Impact score (+4/-2, with color coding).
+
+Headline and category label.
+
+4. Data Handling
+
+Use useEffect in React to call /api/score when the app loads.
+
+Store data in a useState hook (e.g., adIndex, categories, news).
+
+Populate charts and cards dynamically from API data.
+
+5. Styling & UX
+
+Use Tailwind classes for modern, bold styling.
+
+Background: neutral gray or white with dark blue highlights for scores.
+
+Cards: rounded corners, shadow, hover effects.
+
+Impact scores: green for positive, red for negative.
+
+6. Components to Create
+
+components/ADIndexCard.jsx → Displays the main AD Index.
+
+components/CategoryCard.jsx → Displays each category.
+
+components/NewsCard.jsx → Displays headline and score.
+
+components/ADChart.jsx → Displays the line chart for AD Index trend.
+
+7. Mock Data for Charts
+In ADChart.jsx, create a mock dataset:
+
+js
+Copy
+Edit
+const data = [
+  { day: 'Day 1', score: 50 },
+  { day: 'Day 2', score: 52 },
+  { day: 'Day 3', score: 54 },
+  { day: 'Day 4', score: 53 },
+  { day: 'Day 5', score: 55 }
+];
+Use Recharts:
+
+jsx
+Copy
+Edit
+<LineChart width={400} height={200} data={data}>
+  <Line type="monotone" dataKey="score" stroke="#2563eb" strokeWidth={2} />
+  <CartesianGrid stroke="#ccc" />
+  <XAxis dataKey="day" />
+  <YAxis />
+  <Tooltip />
+</LineChart>
+8. Deployment Ready
+
+Configure package.json with scripts:
+
+json
+Copy
+Edit
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js",
+  "client": "npm run dev --prefix client",
+  "client:build": "npm run build --prefix client",
+  "client:serve": "npm run preview --prefix client"
+}
+Use npm run client to start the React dev server in Replit.
+
+Deliverables
+A fully functional app with:
+
+Main dashboard page.
+
+Live mock scores.
+
+Category cards and news feed.
+
+Chart visualization of AD Index.
+
+Clear folder structure:
+
+css
+Copy
+Edit
+root/
+├── server.js
+├── client/
+    ├── src/
+        ├── components/
+        ├── App.jsx
+Prompt:
+"Build a fullstack American Dynamism Tracker in Replit using Node.js + Express (backend) and React + Vite + Tailwind (frontend). Include endpoints for mock AD Index data and categories. Create a dashboard UI with category cards, a line chart (Recharts), and a news feed using mock data. Use components for ADIndexCard, CategoryCard, NewsCard, and ADChart. Style with Tailwind."

@@ -1,0 +1,112 @@
+⚙️ 1. Manufacturing Reshoring
+Current Status: ~287,000 reshored jobs announced in 2023; cumulatively ~2 million since 2010 
+amtonline.org
+Floor Covering News
+.
+Proposed Milestone:
+
+Annual goal: 350,000 reshored jobs per year through 2027.
+
+Cumulative: Reach 3 million jobs by end of 2028.
+
+Why it matters: Sustained reshoring ensures strong domestic capacity and improved resilience.
+
+Question 1: Does “jobs” work as your reshoring metric, or would you prefer counting major factory openings, total investment dollars, or something else?
+
+🛡️ 2. Defense Tech Modernization
+Current Status: DoD budget ~$1 trillion (FY2026), with R&D increasing (e.g., $20 billion for science, $1.3 billion to supply chain) 
+Wikipedia
++9
+AllAmerican.org
++9
+Brightly
++9
+Financial Times
++5
+U.S. Department of Defense
++5
+amtonline.org
++5
+.
+Proposed Milestone:
+
+Deploy 10 new defense-tech contracts (AI/autonomous, quantum, hypersonics) valued at $1 billion+ each by 2026.
+
+Grow S&T/R&D funding by +10 percent year-over-year through 2028.
+
+Add 5 new industrial-scale defense facilities (e.g., munitions, chips, robotics) by 2027.
+
+Question 2: Which output matters most to you—contract count, R&D budget, new facility builds, or deployment scale?
+
+⚡ 3. Energy & Infrastructure
+Current Status: Renewables ~17% of power (wind + solar), 9% of primary energy; renewables outpaced coal in generation 
+Deloitte
+. IIJA invests billions in grid upgrades 
+Axios
++10
+Wikipedia
++10
+IEA
++10
+.
+Proposed Milestone:
+
+Achieve 30 percent renewables of electricity generation by 2027.
+
+Build 50 GW additional solar + wind capacity by 2027 (≈ 38 GW solar, 12 GW wind).
+
+Deploy 100 GW extra grid transmission capacity (per DOE corridor goals) by 2030.
+
+Question 3: What focus should we set—renewable share, capacity added, or grid infrastructure upgrades?
+
+🧰 4. Workforce Development
+Current Status: Manufacturing apprenticeships rose 83% since 2010 
+premiervalleybank.com
++15
+Wall Street Journal
++15
+css.umich.edu
++15
+.
+Proposed Milestone:
+
+Certify 200,000 new skilled-trade apprentices or candidates annually by 2026.
+
+Launch 100 publicly recognized training centers by 2027.
+
+75% job placement rate for apprentices within six months by 2025.
+
+Question 4: Should we track certification numbers, training capacity, placement rates—or all three?
+
+🧠 5. Tech‑Policy Alignment
+Current Status: Bipartisan defense-tech AI funding is accelerating, but there's tension between security rules and innovation speed 
+Financial Times
++3
+theguardian.com
++3
+newyorker.com
++3
+.
+Proposed Milestone:
+
+Pass 3 major bipartisan bills (e.g., AI R&D, data policy, dual-use tech) by 2026.
+
+Fast-track 2 national innovation pathways (like DIU) receiving funding by 2027.
+
+Maintain <2-month average review time for dual-use tech export approvals by 2028.
+
+Question 5: Which policy spaces matter most—AI, dual-use tech, export control, R&D funding—or should we track a combination?
+
+🔗 6. Supply Chain Sovereignty
+Current Status: Recent Biden admin set aside $1 billion for rare-earths, grid, battery minerals under IIJA 
+Wikipedia
+.
+Proposed Milestone:
+
+Bring 5 critical mineral/semiconductor plants online in the U.S. by 2027.
+
+Ensure 90% domestic source or ally-sourced for chips and rare earths by 2028.
+
+Cut average supply-chain delay for key components by 30% by 2028.
+
+Question 6: Which of these goals feels most aligned with your vision—plant count, sourcing ratio, or supply delay?

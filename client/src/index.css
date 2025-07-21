@@ -1,0 +1,368 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Custom animations for enhanced UX */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) skewX(-12deg);
+    }
+    100% {
+      transform: translateX(200%) skewX(-12deg);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  
+  @keyframes twinkle {
+    0%, 50%, 100% {
+      opacity: 0.3;
+    }
+    25%, 75% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes drift {
+    0% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-twinkle {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  
+  .animate-drift {
+    animation: drift 8s ease-in-out infinite;
+  }
+  
+  /* Starfield background */
+  .starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  }
+  
+  .star:nth-child(1) { top: 20%; left: 10%; animation: twinkle 3s ease-in-out infinite; }
+  .star:nth-child(2) { top: 40%; left: 20%; animation: twinkle 4s ease-in-out infinite 0.5s; }
+  .star:nth-child(3) { top: 60%; left: 30%; animation: twinkle 3.5s ease-in-out infinite 1s; }
+  .star:nth-child(4) { top: 80%; left: 40%; animation: twinkle 4.5s ease-in-out infinite 1.5s; }
+  .star:nth-child(5) { top: 30%; left: 50%; animation: twinkle 3s ease-in-out infinite 2s; }
+  .star:nth-child(6) { top: 70%; left: 60%; animation: twinkle 4s ease-in-out infinite 2.5s; }
+  .star:nth-child(7) { top: 10%; left: 70%; animation: twinkle 3.5s ease-in-out infinite 3s; }
+  .star:nth-child(8) { top: 50%; left: 80%; animation: twinkle 4.5s ease-in-out infinite 3.5s; }
+  .star:nth-child(9) { top: 90%; left: 90%; animation: twinkle 3s ease-in-out infinite 4s; }
+  .star:nth-child(10) { top: 15%; left: 85%; animation: twinkle 4s ease-in-out infinite 4.5s; }
+  .star:nth-child(11) { top: 35%; left: 15%; animation: twinkle 3.5s ease-in-out infinite 5s; }
+  .star:nth-child(12) { top: 55%; left: 25%; animation: twinkle 4.5s ease-in-out infinite 5.5s; }
+  .star:nth-child(13) { top: 75%; left: 35%; animation: twinkle 3s ease-in-out infinite 6s; }
+  .star:nth-child(14) { top: 25%; left: 45%; animation: twinkle 4s ease-in-out infinite 6.5s; }
+  .star:nth-child(15) { top: 45%; left: 55%; animation: twinkle 3.5s ease-in-out infinite 7s; }
+  .star:nth-child(16) { top: 65%; left: 65%; animation: twinkle 4.5s ease-in-out infinite 7.5s; }
+  .star:nth-child(17) { top: 85%; left: 75%; animation: twinkle 3s ease-in-out infinite 8s; }
+  .star:nth-child(18) { top: 5%; left: 5%; animation: twinkle 4s ease-in-out infinite 8.5s; }
+  .star:nth-child(19) { top: 95%; left: 15%; animation: twinkle 3.5s ease-in-out infinite 9s; }
+  .star:nth-child(20) { top: 75%; left: 85%; animation: twinkle 4.5s ease-in-out infinite 9.5s; }
+  
+  .dark .star {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Gradient overlay for depth */
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  }
+  
+  .dark .bg-gradient-radial {
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+  }
+  
+  /* Patriotic background for light mode */
+  .patriotic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+    background: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(220, 38, 38, 0.03) 25%,
+      rgba(220, 38, 38, 0.03) 50%,
+      transparent 50%,
+      transparent 75%,
+      rgba(59, 130, 246, 0.03) 75%
+    );
+    background-size: 40px 40px;
+    animation: patriotic-drift 20s linear infinite;
+  }
+  
+  .dark .patriotic-bg {
+    display: none;
+  }
+  
+  @keyframes patriotic-drift {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      transform: translateX(40px) translateY(40px);
+    }
+  }
+  
+  /* Patriotic stars overlay */
+  .patriotic-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+  
+  .dark .patriotic-stars {
+    display: none;
+  }
+  
+  .patriotic-star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #dc2626, #2563eb);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: patriotic-twinkle 6s ease-in-out infinite;
+  }
+  
+  .patriotic-star:nth-child(1) { top: 15%; left: 15%; animation-delay: 0s; }
+  .patriotic-star:nth-child(2) { top: 25%; left: 85%; animation-delay: 1s; }
+  .patriotic-star:nth-child(3) { top: 45%; left: 25%; animation-delay: 2s; }
+  .patriotic-star:nth-child(4) { top: 65%; left: 75%; animation-delay: 3s; }
+  .patriotic-star:nth-child(5) { top: 80%; left: 35%; animation-delay: 4s; }
+  .patriotic-star:nth-child(6) { top: 30%; left: 65%; animation-delay: 5s; }
+  .patriotic-star:nth-child(7) { top: 55%; left: 10%; animation-delay: 1.5s; }
+  .patriotic-star:nth-child(8) { top: 75%; left: 90%; animation-delay: 2.5s; }
+  .patriotic-star:nth-child(9) { top: 10%; left: 45%; animation-delay: 3.5s; }
+  .patriotic-star:nth-child(10) { top: 90%; left: 55%; animation-delay: 4.5s; }
+  
+  @keyframes patriotic-twinkle {
+    0%, 50%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+    75% {
+      opacity: 0.6;
+      transform: scale(0.8);
+    }
+  }
+  
+  /* Subtle eagle silhouette animation */
+  .eagle-silhouette {
+    position: fixed;
+    top: 20%;
+    right: -100px;
+    width: 60px;
+    height: 40px;
+    background: rgba(59, 130, 246, 0.1);
+    clip-path: polygon(20% 50%, 0% 80%, 30% 70%, 50% 90%, 70% 70%, 100% 80%, 80% 50%, 100% 20%, 70% 30%, 50% 10%, 30% 30%, 0% 20%);
+    animation: eagle-flight 25s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+  
+  .dark .eagle-silhouette {
+    display: none;
+  }
+  
+  @keyframes eagle-flight {
+    0% {
+      right: -100px;
+      top: 20%;
+    }
+    25% {
+      right: 25%;
+      top: 15%;
+    }
+    50% {
+      right: 50%;
+      top: 25%;
+    }
+    75% {
+      right: 75%;
+      top: 20%;
+    }
+    100% {
+      right: calc(100% + 100px);
+      top: 30%;
+    }
+  }
+  
+  /* News article sentiment borders */
+  .news-positive {
+    border-left: 4px solid #16a34a;
+  }
+  
+  .news-negative {
+    border-left: 4px solid #dc2626;
+  }
+  
+  .news-neutral {
+    border-left: 4px solid #6b7280;
+  }
+  
+  /* Gradient text effect */
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(210, 40%, 16%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  --success: hsl(156, 73%, 40%);
+  --danger: hsl(0, 84%, 60%);
+  --neutral: hsl(215, 25%, 45%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  --success: hsl(156, 73%, 40%);
+  --danger: hsl(0, 84%, 60%);
+  --neutral: hsl(215, 25%, 65%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-success {
+    color: var(--success);
+  }
+  
+  .text-danger {
+    color: var(--danger);
+  }
+  
+  .text-neutral {
+    color: var(--neutral);
+  }
+  
+  .text-secondary {
+    color: var(--secondary);
+  }
+  
+  .bg-success {
+    background-color: var(--success);
+  }
+  
+  .bg-danger {
+    background-color: var(--danger);
+  }
+}
